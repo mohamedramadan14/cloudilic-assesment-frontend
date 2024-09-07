@@ -45,7 +45,6 @@ const SummaryNode = ({
   
    useEffect(() => {
      if (webScrapperData) {
-       console.log("SummaryNode received data:", webScrapperData?.data?.scrappedData);
        generateSummary(webScrapperData?.data?.scrappedData as string);
      }
    }, [webScrapperData]);

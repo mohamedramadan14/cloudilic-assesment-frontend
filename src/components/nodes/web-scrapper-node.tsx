@@ -5,7 +5,7 @@ import React, { useCallback, useState } from "react";
 import debounce from "lodash.debounce";
 import { TbWorldSearch } from "react-icons/tb";
 import axios from "axios";
-import { BACKEND_URL_LOCAL } from "../../constants";
+import { BACKEND_URL_PROD } from "../../constants";
 
 
 const WebScraperNode = ({ id, data }: NodeProps<Node<any>>) => {
@@ -19,13 +19,12 @@ const WebScraperNode = ({ id, data }: NodeProps<Node<any>>) => {
       try {
         setDisabled(true);
         const response = await axios.post<{ data: string }>(
-          `${BACKEND_URL_LOCAL}/scrape`,
+          `${BACKEND_URL_PROD}/scrape`,
           { url: inputUrl }
         );
 
         if(response.data.data) {
           updateNodeData(id, { scrappedData: response.data.data });
-          console.log("Scraped data:", response.data.data);
         }
         setDisabled(false);
       } catch (error) {
@@ -37,7 +36,6 @@ const WebScraperNode = ({ id, data }: NodeProps<Node<any>>) => {
 
   const onInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log("URL Changed in WebScrapper-Node:", e.target.value);
       setUrl(e.target.value);
       handleScrape(e.target.value);
     },

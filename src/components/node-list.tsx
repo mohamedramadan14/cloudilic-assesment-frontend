@@ -14,8 +14,6 @@ const nodeTypes = [
 
 const NodeList = () => {
     const onDragStartHandler = (e: DragEvent<HTMLDivElement>, nodeType: string) => {
-      console.log(nodeType);
-
       e.dataTransfer.setData("application/reactflow", nodeType);
       e.dataTransfer.effectAllowed = "move";
     };

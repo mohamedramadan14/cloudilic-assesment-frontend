@@ -36,7 +36,6 @@ const Workspace = () => {
 
   const onConnect = useCallback(
     (params: Connection) => {
-      console.log("params",params);
        setEdges((eds) => addEdge({
          style: {
            stroke: "#6b7280",
@@ -63,7 +62,7 @@ const Workspace = () => {
     (e: DragEvent) => {
       e.preventDefault();
       const type = e.dataTransfer.getData("application/reactflow");
-      console.log(type);
+      
       const position = {
         x: e.clientX - 250,
         y: e.clientY - 50,
