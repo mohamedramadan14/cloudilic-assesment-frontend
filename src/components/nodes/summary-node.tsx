@@ -10,7 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import { TbReport } from "react-icons/tb";
 import axios from "axios"
-import { BACKEND_URL_LOCAL } from "../../constants";
+import { BACKEND_URL_PROD } from "../../constants";
 
 
 const SummaryNode = ({
@@ -29,7 +29,7 @@ const SummaryNode = ({
     try {
       setSummarizedData("");
       const response = await axios.post<{ data: string }>(
-        `${BACKEND_URL_LOCAL}/summarize`,
+        `${BACKEND_URL_PROD}/summarize`,
         { data: scrappedData }
       );
       if(response.data?.data) {
