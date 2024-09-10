@@ -26,9 +26,11 @@ const WebScraperNode = ({ id, data }: NodeProps<Node<any>>) => {
         if(response.data.data) {
           updateNodeData(id, { scrappedData: response.data.data });
         }
-        setDisabled(false);
+
       } catch (error) {
         console.error("Error scraping:", error);
+      }finally{
+        setDisabled(false);
       }
     }, 1000),
     [id, data]
